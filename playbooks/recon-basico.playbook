@@ -1,0 +1,10 @@
+# recon-basico.playbook
+# Recon passivo + superficie web minima sobre o mesmo alvo.
+# Uso: ofensivabash -t exemplo.com -p recon-basico
+recon/ctlogs
+recon/dns
+scan/ports        -- -p 80,443,8080,8443
+enum/http
+enum/headers
+scan/tls          -- 443
+post/report

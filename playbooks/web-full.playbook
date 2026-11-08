@@ -1,0 +1,12 @@
+# web-full.playbook
+# Recon + enumeracao web mais completa.
+# Obs: alguns modulos (enum/dirs, enum/params, enum/wordpress, vuln/cors) entram
+# no roadmap v0.3+; o playbook ignora modulos ainda nao instalados com aviso.
+# Uso: ofensivabash -t exemplo.com -p web-full
+recon/ctlogs
+recon/dns
+scan/ports        -- -p 1-1024
+scan/tls          -- 443
+enum/http
+enum/headers
+post/report

@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: ShellCheck + shfmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instala ShellCheck e shfmt
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+          curl -sSfL https://github.com/mvdan/sh/releases/download/v3.8.0/shfmt_v3.8.0_linux_amd64 \
+            -o /usr/local/bin/shfmt
+          sudo chmod +x /usr/local/bin/shfmt || chmod +x /usr/local/bin/shfmt
+
+      - name: ShellCheck (falha em qualquer warning)
+        run: |
+          shellcheck -x ofensivabash install.sh core/*.sh lib/*.sh \
+            modules/*/*.sh modules/_template.sh
+
+      - name: shfmt (checa formatação)
+        run: |
+          shfmt -d -i 4 -ci ofensivabash install.sh core/*.sh lib/*.sh \
+            modules/*/*.sh modules/_template.sh
+
+  test:
+    name: bats (${{ matrix.os }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, kali, arch]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instala bats e dependências base
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bats curl
+
+      - name: Roda os testes
+        run: bats tests/
+
+  # Valida o contrato de módulo: todo .sh em modules/ (exceto _*) deve carregar.
+  contract:
+    name: Contrato de módulo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Carrega o framework e lista módulos
+        run: |
+          chmod +x ofensivabash
+          ./ofensivabash --list-modules
+          # se algum módulo quebrar o contrato, o loader emite warn no stderr
+          ./ofensivabash --list-modules 2>&1 | grep -qi "contrato invalido" \
+            && { echo "Módulo com contrato inválido detectado"; exit 1; } || true

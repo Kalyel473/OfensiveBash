@@ -1,0 +1,26 @@
+# Config real do usuario (só o .example é versionado)
+ofensivabash.conf
+/ofensivabash.conf
+
+# Workspaces gerados em runtime (um por alvo)
+workspaces/
+!workspaces/.gitkeep
+
+# Historico do REPL
+history
+
+# Temporarios
+*.tmp
+*.tmp.*
+*.log
+*.bak
+*~
+
+# Artefatos de SO/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Documentacao-fonte (PDF do prompt mestre) fica fora do repo publico
+*.pdf

@@ -1,0 +1,20 @@
+# ofensivabash.conf.example — copie para ~/.config/ofensivabash/ofensivabash.conf
+#
+# Formato: chave=valor (sem espacos ao redor do =). Comentarios com #.
+# NUNCA comite seu ofensivabash.conf real (so este .example). API keys ficam
+# fora do git e nunca aparecem em logs/relatorios.
+
+# --- Geral ---
+OFB_THREADS=20
+OFB_HTTP_TIMEOUT=10
+OFB_HTTP_RETRIES=2
+OFB_USER_AGENT="OfensivaBash/0.1 (+https://github.com/Kalyel473)"
+OFB_LOCALE=pt_BR
+
+# --- Wordlists (opcionais; usadas por modulos de brute/dir no roadmap) ---
+OFB_WORDLIST_SUBS=/usr/share/wordlists/subs.txt
+OFB_WORDLIST_DIRS=/usr/share/wordlists/dirs.txt
+
+# --- API keys (opcionais; nunca commitadas) ---
+SHODAN_API_KEY=
+DISCORD_WEBHOOK_URL=

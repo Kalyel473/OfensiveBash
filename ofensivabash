@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# OfensivaBash — Framework de pentest e automacao ofensiva em Bash.
+#
+# Este e o entrypoint executavel. Ele apenas resolve o diretorio de
+# instalacao (OFB_HOME), carrega o bootstrap do core e entrega o controle
+# para ofb_main(), que decide entre REPL (interativo) e CLI (nao-interativo).
+#
+# USO AUTORIZADO SOMENTE. Veja o aviso etico exibido no primeiro uso e no
+# README. Use este framework apenas contra alvos que voce tem permissao
+# explicita e por escrito para testar, ou em labs/CTF proprios.
+#
+# Licenca: MIT.
+
+set -euo pipefail
+
+# Resolve o caminho real deste script, seguindo symlinks (install.sh linka o
+# binario em ~/.local/bin). readlink -f existe em Linux/Termux; se faltar,
+# caimos para o caminho literal.
+_ofb_self="${BASH_SOURCE[0]}"
+if command -v readlink >/dev/null 2>&1; then
+    _ofb_resolved="$(readlink -f "$_ofb_self" 2>/dev/null || printf '%s' "$_ofb_self")"
+else
+    _ofb_resolved="$_ofb_self"
+fi
+
+OFB_HOME="$(cd "$(dirname "$_ofb_resolved")" && pwd)"
+export OFB_HOME
+unset _ofb_self _ofb_resolved
+
+# shellcheck source=core/bootstrap.sh
+source "$OFB_HOME/core/bootstrap.sh"
+
+ofb_main "$@"

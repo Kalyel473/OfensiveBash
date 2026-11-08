@@ -1,0 +1,11 @@
+# .shellcheckrc — configuracao do ShellCheck para o OfensivaBash.
+
+# Habilita seguir arquivos via source (source=/dev/null nos helpers).
+external-sources=true
+
+# SC1090/SC1091: source dinamico (loader/runner carregam modulos em runtime).
+disable=SC1090,SC1091
+
+# SC2034: variaveis de contrato de modulo (MODULE_*) sao "usadas" pelo loader
+# via introspeccao, nao por referencia direta no mesmo arquivo.
+disable=SC2034
