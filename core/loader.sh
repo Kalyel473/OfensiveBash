@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/loader.sh — descobre e carrega os modulos.
-#
-# Varre modules/**/*.sh. Para cada arquivo:
-#   1. valida o contrato num SUBSHELL isolado (nao polui o ambiente principal);
-#   2. se valido, da source() de verdade e registra no registry;
-#   3. se invalido/malformado, avisa com warn e SEGUE (nunca derruba o load).
-#
-# O contrato minimo: variaveis MODULE_NAME, MODULE_DESC, MODULE_CATEGORY,
-# MODULE_AUTHOR e a funcao module_run.
 
-# _loader_validate <arquivo> — roda num subshell; imprime os metadados numa
-# linha "chave=valor" separada por TAB se o contrato for cumprido; retorna !=0
-# se nao. Assim o processo principal nao e contaminado por erros do modulo.
 _loader_validate() {
     local file="$1"
     (

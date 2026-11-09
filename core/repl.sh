@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/repl.sh — shell interativo estilo Metasploit.
-#
-# Prompt com estado: ofensivabash (modulo) [alvo] > . Historico persistente,
-# autocomplete de comandos e nomes de modulo, Ctrl+C cancela o comando atual
-# sem sair, Ctrl+D sai limpo.
 
-# Modulo selecionado no momento (via 'use').
 OFB_SELECTED=""
 
 # _repl_prompt — monta a string do prompt conforme o estado.

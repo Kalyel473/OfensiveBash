@@ -1,5 +1,4 @@
 #!/usr/bin/env bats
-# tests/core.bats — testes do core: loader, escopo, sanitizacao.
 
 setup() {
     load "test_helper"

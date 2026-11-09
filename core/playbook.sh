@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/playbook.sh — encadeia modulos a partir de um arquivo .playbook.
-#
-# Formato: uma linha por passo. Comentarios comecam com #. Cada linha e
-#   <modulo> [-- args...]
-# Os args apos -- vao crus para o modulo. $TARGET e $SCOPE ficam disponiveis.
 
-# playbook_resolve <nome> — acha o arquivo do playbook (nome ou caminho).
 playbook_resolve() {
     local name="${1:-}"
     [[ -z "$name" ]] && return 1

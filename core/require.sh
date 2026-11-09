@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/require.sh — guardas reutilizaveis pelos modulos.
-#
-# TODAS retornam codigo de status; NENHUMA chama exit. Um modulo que falha
-# numa guarda apenas retorna, sem derrubar o framework.
-#
-#   require_tool <bin>    — a ferramenta esta no PATH? registra se faltar.
-#   require_target [val]  — ha um alvo definido (ou um valor nao-vazio)?
-#   require_scope <host>  — o host pode ser tocado no modo atual?
 
-# Lista de ferramentas que faltaram durante a sessao (para o relatorio/aviso).
 declare -gA OFB_MISSING_TOOLS=()
 
 # require_tool <bin> — retorna 0 se existe, OFB_EXIT_DEP se nao.

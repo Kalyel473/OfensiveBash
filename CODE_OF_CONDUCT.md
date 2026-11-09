@@ -4,7 +4,7 @@
 
 Como membros, contribuidores e líderes, nos comprometemos a tornar a
 participação na comunidade do OfensivaBash uma experiência livre de assédio para
-todos — independentemente de idade, deficiência, etnia, identidade e expressão de
+todos  independentemente de idade, deficiência, etnia, identidade e expressão de
 gênero, nível de experiência, nacionalidade, aparência, raça, religião ou
 orientação sexual.
 

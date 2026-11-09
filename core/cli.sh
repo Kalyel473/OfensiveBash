@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#
-# core/cli.sh — modo nao-interativo (flags) para scripts e CI.
-#
-# Flags: -t/--target, -m/--module, -p/--playbook, -s/--scope, --safe (default)/
-# --active, --ctf, --list-modules, --report, -o/--output, -q/--quiet,
-# -v/--verbose, --no-color, --version, -h/--help. Args apos -- vao crus ao modulo.
 
 cli_usage() {
     cat >&2 <<USAGE

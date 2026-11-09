@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-#
-# lib/json.sh — helpers de JSON com degradacao graciosa (jq opcional).
-#
-# Se jq existe, usamos jq. Se nao, caimos para grep/sed para os casos simples.
-# Modulos devem SEMPRE preferir estes helpers a assumir jq.
 
-# json_has_jq — 0 se jq esta disponivel.
 json_has_jq() { command -v jq >/dev/null 2>&1; }
 
 # json_field <campo> — extrai um campo escalar de cada objeto (lê stdin).

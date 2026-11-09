@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-#
-# core/session.sh — estado da sessao: alvo, escopo, modo e workspace.
-#
-# Variaveis globais de sessao (exportadas para os modulos):
-#   TARGET     — alvo atual (dominio/IP) ou vazio
-#   SCOPE      — lista de dominios/CIDRs permitidos (separados por espaco)
-#   MODE       — safe | active | ctf
-#   WORKSPACE  — diretorio do workspace do alvo atual
-#
-# Persistencia: session_save/session_load gravam em <workspace>/session.env.
 
 session_init_defaults() {
     export TARGET="${TARGET:-}"
@@ -61,8 +51,12 @@ add_scope() {
     local item="${1:-}"
     [[ -z "$item" ]] && { err "add_scope: item vazio"; return "$OFB_EXIT_USAGE"; }
     # evita duplicatas
+    # SCOPE e separado por espaco, mas o IFS global (bootstrap) nao inclui o
+    # espaco: separa explicitamente.
     local existing
-    for existing in $SCOPE; do
+    local -a items=()
+    IFS=' ' read -r -a items <<< "$SCOPE"
+    for existing in "${items[@]}"; do
         [[ "$existing" == "$item" ]] && return 0
     done
     if [[ -z "$SCOPE" ]]; then
@@ -96,7 +90,9 @@ in_scope() {
     local host="${1:-}"
     [[ -z "$host" ]] && return 1
     local item
-    for item in $SCOPE; do
+    local -a items=()
+    IFS=' ' read -r -a items <<< "$SCOPE"
+    for item in "${items[@]}"; do
         # casamento exato
         [[ "$host" == "$item" ]] && return 0
         # sufixo de dominio

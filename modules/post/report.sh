@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/post/report.sh — dispara o report.sh para o alvo atual.
-#
-# Modulo de pos-processamento: agrega o workspace num report.md. Nao toca o alvo.
 
 MODULE_NAME="post/report"
 MODULE_DESC="Gera o relatorio Markdown do alvo atual a partir do workspace"

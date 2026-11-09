@@ -1,19 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/config.sh — carrega configuracao e expoe cfg_get.
-#
-# Fontes de config, em precedencia (maior ganha):
-#   1. Variaveis de ambiente OFB_* (e chaves conhecidas como SHODAN_API_KEY)
-#   2. ~/.config/ofensivabash/ofensivabash.conf
-#   3. ofensivabash.conf no repo (se existir)
-#   4. defaults embutidos
-#
-# Flags de CLI tem precedencia sobre tudo isso, mas isso e resolvido no cli.sh
-# exportando OFB_* antes de usar os valores.
-#
-# API keys sao lidas por cfg_get e NUNCA aparecem em logs ou relatorios.
 
-# Mapa de configuracao em memoria.
 declare -gA OFB_CFG=()
 
 # Defaults embutidos (secao 10 da spec).

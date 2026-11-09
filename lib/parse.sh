@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
-#
-# lib/parse.sh — validacao e extracao por regex (urls, ips, emails, segredos).
-#
-# Funcoes de validacao retornam 0/1. Funcoes de extracao imprimem os matches,
-# um por linha, lendo de stdin.
 
-# --- Validacao --------------------------------------------------------------
-
-# parse_is_ipv4 <str>
 parse_is_ipv4() {
     local ip="${1:-}"
     [[ "$ip" =~ ^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$ ]] || return 1

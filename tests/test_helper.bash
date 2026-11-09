@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# tests/test_helper.bash — helpers compartilhados pelos testes bats.
 
-# Carrega o core do OfensivaBash num ambiente de teste isolado.
 load_ofensivabash() {
     OFB_HOME="$(cd "$(dirname "${BATS_TEST_FILENAME}")/.." && pwd)"
     export OFB_HOME

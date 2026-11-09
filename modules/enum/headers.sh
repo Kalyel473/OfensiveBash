@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/enum/headers.sh — auditoria de headers de seguranca com nota.
-#
-# INTRUSIVO (leve): uma requisicao HTTP(S) ao alvo. Checa a presenca de headers
-# de seguranca e atribui uma nota simples.
-#
-# Args: [url|host]  (default: https://TARGET)
 
 MODULE_NAME="enum/headers"
 MODULE_DESC="Audita headers de seguranca (HSTS, CSP, X-Frame-Options...) e da uma nota"

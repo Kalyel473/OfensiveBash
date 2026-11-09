@@ -1,11 +1,3 @@
-# Makefile — alvos de desenvolvimento do OfensivaBash.
-#
-#   make install   instala (roda install.sh)
-#   make test      roda os testes bats
-#   make lint      roda ShellCheck em todo o codigo
-#   make fmt       formata com shfmt
-#   make run       abre o REPL
-
 SHELL := /bin/bash
 
 # Arquivos de shell do projeto (core, libs, modulos, entrypoint, install).

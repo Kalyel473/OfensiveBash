@@ -1,5 +1,4 @@
 #!/usr/bin/env bats
-# tests/lib.bats — testes das libs parse, net e fs.
 
 setup() {
     load "test_helper"

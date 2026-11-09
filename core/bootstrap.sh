@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/bootstrap.sh — ponto de entrada logico do OfensivaBash.
-#
-# Responsabilidade unica: definir o modo estrito do shell, resolver e exportar
-# os paths do projeto, dar source() em todo o core/lib na ordem correta, e
-# expor ofb_main() que decide entre REPL e CLI.
-#
-# Este e o UNICO lugar que liga as flags estritas (set -euo pipefail) para o
-# processo principal. Os demais scripts do core sao bibliotecas carregadas aqui.
 
-# Modo estrito. IFS seguro contra word-splitting acidental.
 set -euo pipefail
 IFS=$'\n\t'
 

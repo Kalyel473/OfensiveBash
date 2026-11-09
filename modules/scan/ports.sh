@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/scan/ports.sh — scanner TCP nativo via /dev/tcp (sem nmap).
-#
-# INTRUSIVO: conecta ativamente ao alvo. So roda contra alvo em escopo (modo
-# safe) ou com --active/--ctf. Paraleliza as conexoes com xargs -P.
-#
-# Args: -p <lista>   portas: "80,443" ou "1-1024" ou "top" (default: top).
 
 MODULE_NAME="scan/ports"
 MODULE_DESC="Scanner TCP nativo (/dev/tcp), sem nmap; paraleliza e detecta portas abertas"

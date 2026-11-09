@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-#
-# lib/fs.sh — helpers de filesystem e workspace.
-#
-# O workspace e a area de trabalho por alvo. Modulos NUNCA escrevem em caminho
-# fixo; sempre pedem o diretorio via ws_dir <categoria>.
 
-# ws_init <dir> — cria a estrutura padrao de um workspace.
 ws_init() {
     local ws="${1:-$WORKSPACE}"
     [[ -z "$ws" ]] && { err "ws_init: workspace vazio"; return 1; }
@@ -64,5 +58,9 @@ ws_dedup() {
 fs_count_lines() {
     local f="${1:-}"
     [[ -r "$f" ]] || { printf '0'; return 0; }
-    grep -cve '^[[:space:]]*$' "$f" 2>/dev/null || printf '0'
+    # grep -c ja imprime 0 quando nada casa (mas sai com codigo 1); nao
+    # imprimir outro 0 no fallback, senao a saida vira "0\n0".
+    local n
+    n="$(grep -cve '^[[:space:]]*$' "$f" 2>/dev/null)" || true
+    printf '%s' "${n:-0}"
 }

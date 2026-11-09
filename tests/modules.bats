@@ -1,5 +1,4 @@
 #!/usr/bin/env bats
-# tests/modules.bats — testes de modulo com entrada MOCKADA (sem bater em alvo real).
 
 setup() {
     load "test_helper"

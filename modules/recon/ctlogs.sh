@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/recon/ctlogs.sh — subdominios via Certificate Transparency (crt.sh).
-#
-# Recon PASSIVO: consulta um log publico de CT, nao toca o alvo diretamente.
 
 MODULE_NAME="recon/ctlogs"
 MODULE_DESC="Enumera subdominios consultando logs de Certificate Transparency (crt.sh)"
@@ -25,6 +21,12 @@ module_run() {
 
     if [[ -z "$raw" ]]; then
         warn "Resposta vazia de crt.sh"; return 1
+    fi
+    # crt.sh costuma ficar lento/instavel e devolver HTML de erro em vez de JSON.
+    if [[ "${raw#"${raw%%[![:space:]]*}"}" != \[* ]]; then
+        warn "crt.sh devolveu uma resposta invalida (servico instavel). Tente de novo"
+        warn "mais tarde ou aumente o timeout: OFB_HTTP_TIMEOUT=30 ofensivabash ..."
+        return 1
     fi
 
     if json_has_jq; then

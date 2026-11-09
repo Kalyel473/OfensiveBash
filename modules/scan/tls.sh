@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/scan/tls.sh — inspeciona certificado TLS e protocolos via openssl.
-#
-# INTRUSIVO (leve): abre uma conexao TLS ao alvo para ler o certificado e
-# testar versoes de protocolo. Degrada com aviso se openssl faltar.
-#
-# Args: [porta]  (default: 443)
 
 MODULE_NAME="scan/tls"
 MODULE_DESC="Inspeciona certificado, validade e protocolos/cifras TLS via openssl"

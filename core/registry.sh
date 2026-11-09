@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-#
-# core/registry.sh — tabela de modulos carregados.
-#
-# Mapeia nome_do_modulo -> metadados. Usa arrays associativos indexados pelo
-# MODULE_NAME (ex: "recon/ctlogs"). O loader popula; REPL/CLI consultam.
 
 declare -gA OFB_REG_DESC=()      # nome -> descricao
 declare -gA OFB_REG_CAT=()       # nome -> categoria

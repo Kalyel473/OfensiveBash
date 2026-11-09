@@ -1,23 +1,5 @@
 #!/usr/bin/env bash
-#
-# modules/_template.sh — MOLDE de modulo do OfensivaBash.
-#
-# Como contribuir com um modulo:
-#   1. Copie este arquivo para modules/<categoria>/<nome>.sh
-#   2. Preencha os metadados abaixo.
-#   3. Escreva module_run() usando os helpers do core/lib.
-#   4. Rode `make lint` e `make test`.
-#
-# Regras de ouro:
-#   - NUNCA chame exit; use return.
-#   - Grave saida em "$(ws_dir <categoria>)/...", nunca em caminho fixo.
-#   - Toque o alvo apenas apos require_target/require_scope.
-#   - Nenhum payload malicioso, persistencia ou exploit-arma. Foco em
-#     descoberta, enumeracao, checagem de config, CTF e relatorio.
-#
-# O loader ignora arquivos iniciados por "_", entao este molde nao e carregado.
 
-# --- Metadados (obrigatorios) ----------------------------------------------
 MODULE_NAME="categoria/nome"                 # identificador unico
 MODULE_DESC="Descreva em uma linha, em PT-BR, o que o modulo faz"
 MODULE_CATEGORY="recon"                       # recon|scan|enum|vuln|ctf|post

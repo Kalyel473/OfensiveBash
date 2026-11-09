@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-#
-# lib/http.sh — wrapper fino sobre curl (UA, timeout, retries).
-#
-# Centraliza: user-agent configuravel, timeout, retries com limite e montagem
-# de argumentos via array (nunca string). Todo modulo que fala HTTP usa isto.
 
-# _http_base_args — monta o array base de args do curl.
-# Popula a variavel nomeada passada como $1 (nameref).
 _http_base_args() {
     local -n _arr="$1"
     local ua tmo

@@ -1,13 +1,4 @@
 #!/usr/bin/env bash
-#
-# install.sh — instalador do OfensivaBash.
-#
-# O que faz:
-#   - cria ~/.config/ofensivabash/ e copia o conf.example (se ainda nao existir)
-#   - linka o entrypoint em ~/.local/bin (ou $PREFIX/bin no Termux)
-#   - valida dependencias base e avisa sobre as opcionais
-#
-# Sem root obrigatorio. Instalacao alternativa: git clone + rodar ./ofensivabash.
 
 set -euo pipefail
 IFS=$'\n\t'

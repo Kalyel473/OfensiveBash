@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/ui.sh — toda a saida do framework passa por aqui.
-#
-# Funcoes: info, warn, err, ok, debug, banner, prompt_line.
-# Respeita NO_COLOR e OFB_QUIET. Cores via tput com fallback para ANSI cru.
-# Quando o runner pede (OFB_JSONLOG apontando para um arquivo), as mensagens
-# tambem viram linhas JSON estruturadas.
 
-# --- Deteccao de cor --------------------------------------------------------
 _ui_use_color() {
     # Desliga cor se: NO_COLOR setado, OFB_NO_COLOR=1, ou stdout nao e um tty.
     [[ -n "${NO_COLOR:-}" ]] && return 1

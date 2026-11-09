@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/recon/dns.sh — registros DNS (A/AAAA/MX/NS/TXT/CNAME) via dig.
-#
-# Recon PASSIVO: consulta DNS publico. Degrada para host/nslookup se dig faltar.
 
 MODULE_NAME="recon/dns"
 MODULE_DESC="Coleta registros A/AAAA/MX/NS/TXT/CNAME do dominio"
@@ -19,7 +15,7 @@ module_run() {
     local out; out="$(ws_dir recon)/dns.txt" || return 1
     info "Coletando registros DNS de $domain..."
 
-    local types="A AAAA MX NS TXT CNAME SOA"
+    local -a types=(A AAAA MX NS TXT CNAME SOA)
     local have_dig=0
     require_tool dig 2>/dev/null && have_dig=1
 
@@ -27,7 +23,7 @@ module_run() {
         printf '# Registros DNS de %s\n' "$domain"
         printf '# Gerado em %s\n\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
         local t
-        for t in $types; do
+        for t in "${types[@]}"; do
             printf '[%s]\n' "$t"
             if [[ "$have_dig" -eq 1 ]]; then
                 dig +short "$t" "$domain" 2>/dev/null || true

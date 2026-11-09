@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/report.sh — agrega o workspace do alvo num report.md (e opcional .html).
-#
-# Monta: cabecalho, sumario da sessao, timeline (do log.jsonl), achados por
-# categoria (lista de arquivos de saida) e ferramentas ausentes.
 
-# report_generate [alvo] — gera <workspace>/report.md para o alvo atual.
 report_generate() {
     local target="${1:-$TARGET}"
     if [[ -z "$target" ]]; then

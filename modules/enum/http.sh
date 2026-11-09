@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#
-# modules/enum/http.sh — fingerprint HTTP: status, headers, tech, robots, titulo.
-#
-# INTRUSIVO (leve): faz requisicoes HTTP(S) ao alvo. Degrada se curl faltar.
-#
-# Args: [url ou host]  (default: http(s)://TARGET)
 
 MODULE_NAME="enum/http"
 MODULE_DESC="Fingerprint HTTP: status, headers, servidor/tech, robots.txt e titulo"

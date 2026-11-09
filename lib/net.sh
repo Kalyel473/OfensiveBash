@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-#
-# lib/net.sh — rede: resolucao, checagem de porta via /dev/tcp, CIDR, IP privado.
-#
-# Nada aqui depende de nmap. Usamos o /dev/tcp do proprio Bash para checar
-# portas, com fallback para dig/host/nslookup na resolucao.
 
-# net_is_localhost <host>
 net_is_localhost() {
     local h="${1:-}"
     case "$h" in

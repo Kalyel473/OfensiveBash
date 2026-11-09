@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
-#
-# core/runner.sh — executa UM modulo com guardas, logging e medicao.
-#
-# Importante: todos os modulos definem a funcao module_run, entao o loader
-# acaba deixando apenas a ultima no ambiente. Por isso o runner RE-CARREGA
-# (source) o arquivo do modulo selecionado imediatamente antes de executar,
-# ligando module_run/MODULE_* ao modulo certo.
-#
-# Passos: valida existencia -> re-source -> require_tools (MODULE_REQUIRES) ->
-# require_scope (se intrusivo) -> cria saida no workspace -> mede tempo ->
-# captura exit code -> grava linha em log.jsonl.
 
-# _runner_log <module> <status> <duration> — acrescenta uma linha no log.jsonl.
 _runner_log() {
     local module="$1" status="$2" dur="$3"
     [[ -z "$WORKSPACE" ]] && return 0
@@ -53,11 +41,13 @@ run_module() {
 
     # Guarda: dependencias declaradas.
     if [[ -n "${MODULE_REQUIRES:-}" ]]; then
-        # shellcheck disable=SC2086
-        if ! require_tools $MODULE_REQUIRES; then
+        # separa por espaco explicitamente (o IFS global nao inclui espaco)
+        local -a reqs=()
+        IFS=' ' read -r -a reqs <<< "$MODULE_REQUIRES"
+        if ! require_tools "${reqs[@]}"; then
             local miss=""
             local t
-            for t in $MODULE_REQUIRES; do
+            for t in "${reqs[@]}"; do
                 command -v "$t" >/dev/null 2>&1 || miss+=" $t"
             done
             warn "Modulo '$name' precisa de:${miss}. Instale e tente de novo."
